@@ -1,2 +1,2 @@
 # RMSTUSCIENCECLUB
-Live view:  https://mohammadkamrulhassan.github.io/RMSTUSC/
+Live view:  https://mabrurislam001-hub.github.io/RMSTUSC/
