@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Header Section</title>
+  <style>
+    /* Header Styles */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #0369a1;
+      color: white;
+      padding: 10px 20px;
+      flex-wrap: wrap;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 1.2rem;
+      font-weight: bold;
+      gap: 10px;
+    }
+
+    .logo img {
+      height: 60px;
+      background-color: white;
+      padding: 8px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links li {
+      position: relative;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 10px;
+      display: block;
+      transition: background-color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #0284c7;
+      padding: 10px 0;
+      list-style: none;
+      min-width: 200px;
+      z-index: 10;
+      border-radius: 5px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .dropdown-menu li {
+      width: 100%;
+    }
+
+    .dropdown-menu li a {
+      padding: 10px 20px;
+      color: white;
+      display: block;
+      white-space: nowrap;
+    }
+
+    .dropdown-menu li a:hover {
+      background-color: #0369a1;
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 5px;
+    }
+
+    .mobile-menu .line {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      border-radius: 2px;
+      transition: transform 0.3s ease;
+    }
+
+    /* Desktop hover dropdown */
+    @media (min-width: 769px) {
+      .dropdown:hover .dropdown-menu {
+        display: block;
+      }
+    }
+
+    /* Mobile styles */
+    @media (max-width: 768px) {
+      .header {
+        padding: 10px 15px;
+        flex-wrap: nowrap;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #0369a1;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        z-index: 999;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links li {
+        width: 100%;
+      }
+
+      .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        background-color: rgba(0, 0, 0, 0.1);
+        display: none;
+        padding-left: 20px;
+      }
+
+      .dropdown-menu.active {
+        display: block;
+      }
+
+      .mobile-menu {
+        display: flex;
+      }
+
+      .mobile-menu.active .line:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+
+      .mobile-menu.active .line:nth-child(2) {
+        opacity: 0;
+      }
+
+      .mobile-menu.active .line:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+      }
+    }
+
+    .dropdown-toggle::after {
+      content: ' ▼';
+      font-size: 0.8em;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header Section -->
+  <header class="header">
+    <div class="logo">
+      <img src="res/RMSTUSC_logo.png" alt="Logo">
+      RMSTU Science Club
+    </div>
+
+    <div class="mobile-menu" id="mobileMenuToggle">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
+
+    <ul class="nav-links" id="mainNav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="notice&events.html">Notice & Event</a></li>
+
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" onclick="toggleDropdown(event, this)">Department</a>
+        <ul class="dropdown-menu">
+          <li><a href="promotion.html">Promotion</a></li>
+          <li><a href="publication.html">Publication</a></li>
+          <li><a href="public_affairs.html">Public Affairs</a></li>
+          <li><a href="scientific_research.html">Scientific Research</a></li>
+          <li><a href="project.html">Project</a></li>
+          <li><a href="it.html">IT</a></li>
+          <li><a href="research_development.html">Research & Development</a></li>
+          <li><a href="hrm.html">Human Resource & Management</a></li>
+          <li><a href="social_activity.html">Social Activities</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" onclick="toggleDropdown(event, this)">About Us</a>
+        <ul class="dropdown-menu">
+          <li><a href="Executive_body.html">Executive Body</a></li>
+          <li><a href="advisory_body.html">Advisory Body</a></li>
+          <li><a href="Former_committee.html">Former Committee</a></li>
+        </ul>
+      </li>
+
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="publications.html">Publication</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="seminer.html">Seminar</a></li>
+      <li><a href="alumni.html">Alumni</a></li>
+      <li><a href="developers.html">Developer</a></li>
+    </ul>
+  </header>
+
+  <!-- Header Scripts -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const mobileMenuToggle = document.getElementById("mobileMenuToggle");
+      const mainNav = document.getElementById("mainNav");
+
+      // Mobile menu toggle
+      if (mobileMenuToggle) {
+        mobileMenuToggle.addEventListener("click", function (e) {
+          e.stopPropagation();
+          this.classList.toggle("active");
+          mainNav.classList.toggle("active");
+        });
+      }
+
+      // Close menu when clicking outside
+      document.addEventListener("click", function (e) {
+        if (!e.target.closest('.header')) {
+          mobileMenuToggle.classList.remove("active");
+          mainNav.classList.remove("active");
+        }
+      });
+
+      // Close menu when clicking a link
+      mainNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', function () {
+          mobileMenuToggle.classList.remove("active");
+          mainNav.classList.remove("active");
+        });
+      });
+    });
+
+    // Dropdown toggle for mobile
+    function toggleDropdown(event, element) {
+      event.preventDefault();
+      event.stopPropagation();
+
+      const dropdownMenu = element.nextElementSibling;
+      const isMobile = window.innerWidth <= 768;
+
+      if (isMobile) {
+        // Close other dropdowns
+        document.querySelectorAll('.dropdown-menu.active').forEach(menu => {
+          if (menu !== dropdownMenu) {
+            menu.classList.remove('active');
+          }
+        });
+
+        // Toggle current dropdown
+        dropdownMenu.classList.toggle('active');
+      }
+      // On desktop, hover will handle it
+    }
+
+    // Close dropdowns when clicking outside (for desktop)
+    document.addEventListener('click', function () {
+      if (window.innerWidth > 768) {
+        document.querySelectorAll('.dropdown-menu').forEach(menu => {
+          menu.style.display = 'none';
+        });
+      }
+    });
+
+    // Keep dropdown open when hovering (desktop)
+    document.querySelectorAll('.dropdown').forEach(dropdown => {
+      dropdown.addEventListener('mouseenter', function () {
+        if (window.innerWidth > 768) {
+          this.querySelector('.dropdown-menu').style.display = 'block';
+        }
+      });
+
+      dropdown.addEventListener('mouseleave', function () {
+        if (window.innerWidth > 768) {
+          this.querySelector('.dropdown-menu').style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
